@@ -17,16 +17,17 @@ const index = async (req, res) => {
 // create Data in our DB
 // Post
 const createFakeData = async (req, res) => {
-    // array of 1000 objects with Transaction Schema
-    const testData = generator(req.params.quantity, new Date(req.params.startDate), new Date(req.params.endDate), createClickObject);
+    // array of x objects with Transaction Schema
+    const testData = generator(req.body.quantity, new Date(req.body.startDate), new Date(req.body.endDate), createClickObject);
     try {
         // insert testData into DB
         const insertedDoc = await Transaction.insertMany(testData);
 
         res.json({
             message: "good transfer",
-            startDate: req.params.startDate,
-            endDate: req.params.endDate,
+            quantity: req.body.quantity,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
             inserted: insertedDoc
         });
 
