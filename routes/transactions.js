@@ -7,9 +7,9 @@ var transaction = require('../controllers/transaction-controller');
 router.get('/', transaction.index);
 router.get('/fraud', transaction.getFraudData);
 router.get('/byid/:id', transaction.getById);
-// create fake data in DB
-router.get('/insertdata', transaction.createFakeData);
 
+// create fake data in DB
+router.post('/insertdata', transaction.createFakeData);
 router.post('/', transaction.create);
 router.put('/:id', transaction.update);
 
