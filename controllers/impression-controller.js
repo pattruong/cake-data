@@ -24,6 +24,8 @@ const createFakeData = async (req, res) => {
 
         res.json({
             message: "good transfer",
+            startDate: req.params.startDate,
+            endDate: req.params.endDate,
             inserted: insertedDoc
         });
     } catch (err) {
