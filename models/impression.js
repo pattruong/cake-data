@@ -25,16 +25,18 @@ impressionSchema.statics.findWithFraud = async function () {
         const allImpressions = await this.find();
 
         // get all timestamps and data into an object
-        const dataToSend = allImpressions.map(t => ({
-            Time: t["timeStamp"],
-            Data: charCodeCalculator(t["location"])
+        const dataToSend = allImpressions.map(impression => ({
+            Time: impression["timeStamp"],
+            Data: charCodeCalculator(impression["location"])
         }));
+
+        // package data to be sent to ML API
         const data = dataBuilder(dataToSend);
         const options = optionBuilder(process.env.URI, process.env.KEY, data);
 
         // do api stuff here for fraud check
         let output = await requestPromise(options);
-
+        
         // convert to a an array of objects
         output = output["Results"]["output1"];
 
