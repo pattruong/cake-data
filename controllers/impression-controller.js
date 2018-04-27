@@ -2,6 +2,7 @@ const Impression = require('../models/impression');
 const { generator, createImpressionObject } = require('../random-generator/generator');
 const request = require('request');
 const { dataBuilder, optionBuilder } = require('../helper/helper-functions');
+const { compareKey } = require('../helper/key-check');
 
 //GET
 const index = async (req, res) => {
@@ -54,8 +55,8 @@ const getById = async (req, res) => {
 }
 
 const update = async (req, res) => {
-    try{
-        const impression = await Impression.findByIdAndUpdate(req.params.id, {...req.body}, {new: true});
+    try {
+        const impression = await Impression.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true });
         res.json(impression);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -64,7 +65,7 @@ const update = async (req, res) => {
 
 // POST
 const create = async (req, res) => {
-    try{
+    try {
         const impression = await Impression.create(req.body);
         res.json(impression);
     } catch (err) {

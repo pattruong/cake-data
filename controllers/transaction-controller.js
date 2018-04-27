@@ -2,7 +2,7 @@ const Transaction = require('../models/transaction');
 const { generator, createClickObject } = require('../random-generator/generator');
 const request = require('request');
 const { dataBuilder, optionBuilder } = require('../helper/helper-functions');
-
+const { compareKey } = require('../helper/key-check');
 
 // GET
 const index = async (req, res) => {
