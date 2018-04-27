@@ -30,6 +30,8 @@ impressionSchema.statics.findWithFraud = async function () {
             Data: charCodeCalculator(impression["location"])
         }));
 
+        
+
         // package data to be sent to ML API
         const data = dataBuilder(dataToSend);
         const options = optionBuilder(process.env.URI, process.env.KEY, data);

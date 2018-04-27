@@ -69,4 +69,4 @@ const charCodeCalculator = str => {
 
 
 
-module.exports = { optionBuilder, dataBuilder, ipCruncher, scoreAnalyzer, requestPromise }
+module.exports = { optionBuilder, dataBuilder, ipCruncher, scoreAnalyzer, charCodeCalculator, requestPromise }
